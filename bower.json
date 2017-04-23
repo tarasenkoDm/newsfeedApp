@@ -1,0 +1,21 @@
+{
+  "name": "gulp_boilerplate",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "tarasenkoDm <lordtda@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "jquery": "^3.2.1"
+  }
+}

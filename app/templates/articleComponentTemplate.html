@@ -1,0 +1,11 @@
+<h3>{{articleComponentCtrl.article.title}}</h3>
+
+<span>Created on {{articleComponentCtrl.article.createdDate | date}}</span>
+<p ng-if="articleComponentCtrl.article.updatedDate">
+    Last update on {{articleComponentCtrl.article.updatedDate | date}}
+</p>
+<p>{{articleComponentCtrl.article.text}}</p>
+<img ng-if="articleComponentCtrl.article.image" ng-src="{{articleComponentCtrl.article.image}}"/>
+<button type="button" ng-click="articleComponentCtrl.onEdit()"> Edit</button>
+<button type="button" ng-click="articleComponentCtrl.onDelete()"> Delete</button>
+<p>{{articleComponentCtrl.article.author}}</p>

@@ -1,0 +1,40 @@
+{
+  "articles": [
+    {
+      "id": 1492949099750,
+      "author": "Tolstoy",
+      "createdDate": 1491638405672,
+      "image": "http://www.commentsyard.com/wp-content/uploads/2016/07/Wishing-You-A-Good-Night-CY1101.jpg",
+      "title": "Article 1",
+      "text": "The Financial Times was the first UK newspaper to integrate its web news team with its old media journalists. Several levels of subscription access, email news alerts and a desktop news ticker are available.",
+      "updatedDate": 1492950772155
+    },
+    {
+      "id": 1492949099740,
+      "author": "bun",
+      "createdDate": 14916395905672,
+      "image": "",
+      "title": "Article 2",
+      "text": "Top news and business stories by catyegory, from the world's largest agency, including video clips. Registration required for some services.",
+      "updatedDate": 1492974481340
+    },
+    {
+      "id": 1492967373046,
+      "author": "",
+      "title": "9999",
+      "text": "n  n  n",
+      "image": "",
+      "createdDate": 1492967373046,
+      "updatedDate": 1492987132449
+    },
+    {
+      "id": 1492989966870,
+      "author": "User-author",
+      "title": "1111111111111111111111111111",
+      "text": "1",
+      "image": "",
+      "createdDate": 1492989966870,
+      "updatedDate": ""
+    }
+  ]
+}

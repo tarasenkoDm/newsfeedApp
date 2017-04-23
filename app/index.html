@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Newsfeed</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body ng-app="app" ng-controller="appController" ng-cloak>
+<div>
+    <h1 class="mainTitle">Newsfeed</h1>
+</div>
+
+<div class="container"
+     ng-controller="newsfeed as newsfeed"
+>
+    <div>
+        <button type="button"
+                ng-click="newsfeed.showEditPopup()"
+        >
+            Add news
+        </button>
+    </div>
+    <div class="inline">
+        <span>Sort by</span>
+        <select
+                ng-model="newsfeed.sortField"
+                ng-options="option.value as option.name for option in newsfeed.SORTING_OPTIONS"
+        >
+        </select>
+        <label>Reverse order:
+            <input type="checkbox" ng-model="newsfeed.reverseSortOrder">
+        </label>
+    </div>
+
+    <div class="inline">
+        <label> Filter
+            <input type="text" ng-model="newsfeed.filter"/>
+        </label>
+    </div>
+
+    <button class="inline"
+            type="button"
+            ng-click="newsfeed.resetFilter()"
+    >
+        Reset
+    </button>
+
+    <!--Articles list -->
+
+    <ul class="newsfeedList">
+        <li
+            ng-repeat="article in newsfeed.articles | filter:{title:newsfeed.filter} | orderBy:newsfeed.sortField:newsfeed.reverseSortOrder as results
+            track by $index"
+        >
+            <article-component
+                    article="article"
+                    on-edit="newsfeed.showEditPopup(article)"
+                    on-delete="newsfeed.deleteArticle(article.id)"
+            ></article-component>
+        </li>
+        <p ng-if="!results.length" >No articles found!</p>
+    </ul>
+
+    <edit-popup-component
+            visible="newsfeed.editPopupVisible"
+            on-close="newsfeed.hideEditPopup()"
+            article="newsfeed.newArticleModel"
+            on-remove-img="newsfeed.removeImage()"
+            on-save="newsfeed.saveArticle()"
+    ></edit-popup-component>
+
+    <error-popup-component
+            error-text="newsfeed.errorMessage"
+            on-ok="newsfeed.clearErrorMessage()"
+    ></error-popup-component>
+</div>
+
+<!-- scripts -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+<script src="js/main.js" defer></script>
+<script src="js/appController.js" defer></script>
+<script src="js/newsfeedModule.js" defer></script>
+<script src="js/newsfeedController.js" defer></script>
+<script src="js/newsfeedUrlConstants.js" defer></script>
+<script src="js/articleComponent.js" defer></script>
+<script src="js/editPopupComponent.js" defer></script>
+<script src="js/errorPopupComponent.js" defer></script>
+</body>
+</html>

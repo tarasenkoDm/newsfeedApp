@@ -1,0 +1,91 @@
+.mainTitle {
+	text-align:center;
+}
+.container {
+	width: 70%;
+	margin: 0 auto;
+}
+.error-text {
+  	color: red;
+	font-weight: bold;
+}
+.inline {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+/* Form Style*/
+
+.popupForm {
+	display: block;
+	text-align: center;
+	width: 60%;
+	background: #eee;
+	padding: 10px 0 30px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+	position: fixed;
+	left: 50%;
+	top: 40%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+}
+
+.popupForm .close {
+	position: absolute;
+	right: 25px;
+	top: 25px;
+	cursor: pointer;
+}
+
+.formSection {
+	width: 40%;
+	display: inline-block;
+}
+
+.formSection input, .formSection textarea, .formSection select {
+	width: 80%;
+}
+
+.ng-invalid.ng-touched, .ng-submitted .ng-invalid {
+	border-color: red;
+}
+
+.newsfeedList li {
+	position: relative;
+}
+
+.newsfeedList li:hover .editButtons {
+	opacity: 1;
+	visibility: visible;
+}
+
+.editButtons {
+	position: absolute;
+	right: 25px;
+	top: 10px;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.25s ease-in-out;
+}
+
+.newsfeedList {
+	margin: 20px 0 0;
+	padding: 0;
+}
+
+.newsfeedList li {
+	margin: 0 0 20px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	list-style: none;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.newsfeedList li img {
+	width: 200px;
+	margin: 0 0 0 10px;
+	vert-align: top;
+}
+

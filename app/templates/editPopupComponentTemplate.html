@@ -1,0 +1,48 @@
+<div class="popupForm"
+     ng-if="editPopupComponentCtrl.visible"
+>
+    <form name="editPopupComponentCtrl.newArticleForm" novalidate>
+            <span class="close"
+                  ng-click="editPopupComponentCtrl.onClose()"
+            >X</span>
+
+        <div class="formSection">
+            <p>Title</p>
+            <input type="text" required
+                   ng-model="editPopupComponentCtrl.article.title"
+            />
+        </div>
+        <div class="formSection">
+            <p>Article</p>
+            <textarea required
+                      ng-model="editPopupComponentCtrl.article.text"
+            >
+        </textarea>
+        </div>
+        <div class="formSection">
+            <p>Images</p>
+
+            <input type="text"
+                   ng-model="editPopupComponentCtrl.article.image"
+            />
+            <button type="button"
+                    ng-click="editPopupComponentCtrl.onRemoveImg()">
+                Remove image
+            </button>
+        </div>
+        <div>
+            <div class="formSection">
+                <button type="button"
+                        ng-click="editPopupComponentCtrl.save()"
+                >Save
+                </button>
+            </div>
+            <div class="formSection">
+                <button type="button"
+                        ng-click="editPopupComponentCtrl.onClose()"
+                >Cancel
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
