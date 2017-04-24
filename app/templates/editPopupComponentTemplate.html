@@ -1,10 +1,11 @@
 <div class="popupForm"
      ng-if="editPopupComponentCtrl.visible"
 >
-    <form name="editPopupComponentCtrl.newArticleForm" novalidate>
-            <span class="close"
-                  ng-click="editPopupComponentCtrl.onClose()"
-            >X</span>
+    <form class="edit-form" name="editPopupComponentCtrl.newArticleForm" novalidate>
+        <button class="close btn btn-red btn-reset"
+                ng-click="editPopupComponentCtrl.onClose()"
+        >x
+        </button>
 
         <div class="formSection">
             <p>Title</p>
@@ -13,36 +14,38 @@
             />
         </div>
         <div class="formSection">
-            <p>Article</p>
-            <textarea required
-                      ng-model="editPopupComponentCtrl.article.text"
-            >
-        </textarea>
-        </div>
-        <div class="formSection">
-            <p>Images</p>
-
+            <p>Image</p>
             <input type="text"
                    ng-model="editPopupComponentCtrl.article.image"
             />
-            <button type="button"
+            <br>
+            <button class="btn btn-red btn-remove"
+                    type="button"
                     ng-click="editPopupComponentCtrl.onRemoveImg()">
                 Remove image
             </button>
         </div>
-        <div>
-            <div class="formSection">
-                <button type="button"
-                        ng-click="editPopupComponentCtrl.save()"
-                >Save
-                </button>
-            </div>
-            <div class="formSection">
-                <button type="button"
-                        ng-click="editPopupComponentCtrl.onClose()"
-                >Cancel
-                </button>
-            </div>
+        <div class="formSection">
+            <p>Article</p>
+            <textarea required
+                      ng-model="editPopupComponentCtrl.article.text"
+                      rows="8"
+            >
+            </textarea>
         </div>
+
+        <div class="formSection">
+            <button class="inline btn btn-green"
+                    type="button"
+                    ng-click="editPopupComponentCtrl.save()"
+            >Save
+            </button>
+            <button class="inline btn btn-red"
+                    type="button"
+                    ng-click="editPopupComponentCtrl.onClose()"
+            >Cancel
+            </button>
+        </div>
+
     </form>
 </div>

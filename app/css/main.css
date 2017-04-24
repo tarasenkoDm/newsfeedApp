@@ -1,3 +1,22 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+h3 {
+	font-size: 1.5em;
+}
+
+.small-text {
+	font-size: 0.8em;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
 .mainTitle {
 	text-align:center;
 }
@@ -13,6 +32,32 @@
 	display: inline-block;
 	margin-left: 10px;
 }
+.filter-options {
+	text-align: right;
+}
+.filter-options select{
+	padding: 1px 0;
+}
+.order-checkbox {
+	margin: 0;
+	vertical-align: middle;
+}
+.btn {
+	cursor: pointer;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+}
+.btn-red {
+	background-color: #f44336;
+}
+.btn-green {
+	background-color: #4CAF50;
+}
+.btn-reset {
+	padding: 3px 5px;
+}
 
 /* Form Style*/
 
@@ -26,25 +71,34 @@
 	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 	position: fixed;
 	left: 50%;
-	top: 40%;
+	top: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 1;
 }
 
 .popupForm .close {
 	position: absolute;
-	right: 25px;
-	top: 25px;
+	right: 15px;
+	top: 13px;
 	cursor: pointer;
 }
 
+.edit-form {
+	padding-top: 35px;
+}
+
 .formSection {
-	width: 40%;
-	display: inline-block;
+	width: 100%;
+	margin-bottom: 10px;
 }
 
 .formSection input, .formSection textarea, .formSection select {
-	width: 80%;
+	width: 70%;
+}
+
+.btn-remove {
+	margin-top: 5px;
+	padding: 3px 10px;
 }
 
 .ng-invalid.ng-touched, .ng-submitted .ng-invalid {
@@ -84,8 +138,17 @@
 }
 
 .newsfeedList li img {
-	width: 200px;
-	margin: 0 0 0 10px;
-	vert-align: top;
+	width: 150px;
+	float: left;
+	padding-right: 20px;
 }
 
+.newsfeedList li .author{
+	float: left;
+	margin: 0;
+	font-style: italic;
+}
+
+.newsfeedList li .buttons{
+	float: right;
+}

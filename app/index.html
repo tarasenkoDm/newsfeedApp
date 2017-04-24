@@ -18,37 +18,38 @@
      ng-controller="newsfeed as newsfeed"
 >
     <div>
-        <button type="button"
+        <button class="btn btn-green"
+                type="button"
                 ng-click="newsfeed.showEditPopup()"
         >
             Add news
         </button>
     </div>
-    <div class="inline">
-        <span>Sort by</span>
-        <select
-                ng-model="newsfeed.sortField"
-                ng-options="option.value as option.name for option in newsfeed.SORTING_OPTIONS"
-        >
-        </select>
-        <label>Reverse order:
-            <input type="checkbox" ng-model="newsfeed.reverseSortOrder">
-        </label>
+    <div class="filter-options">
+        <div class="inline">
+            <span>Sort by</span>
+            <select
+                    ng-model="newsfeed.sortField"
+                    ng-options="option.value as option.name for option in newsfeed.SORTING_OPTIONS"
+            >
+            </select>
+            <label>Reverse order
+                <input class="order-checkbox" type="checkbox" ng-model="newsfeed.reverseSortOrder">
+            </label>
+        </div>
+
+        <div class="inline">
+            <label> Filter
+                <input type="text" ng-model="newsfeed.filter"/>
+            </label>
+        </div>
+
+        <button class="inline btn btn-red btn-reset"
+                type="button"
+                ng-click="newsfeed.resetFilter()"
+        > x
+        </button>
     </div>
-
-    <div class="inline">
-        <label> Filter
-            <input type="text" ng-model="newsfeed.filter"/>
-        </label>
-    </div>
-
-    <button class="inline"
-            type="button"
-            ng-click="newsfeed.resetFilter()"
-    >
-        Reset
-    </button>
-
     <!--Articles list -->
 
     <ul class="newsfeedList">
@@ -62,7 +63,7 @@
                     on-delete="newsfeed.deleteArticle(article.id)"
             ></article-component>
         </li>
-        <p ng-if="!results.length" >No articles found!</p>
+        <p ng-if="!results.length">No articles found!</p>
     </ul>
 
     <edit-popup-component
