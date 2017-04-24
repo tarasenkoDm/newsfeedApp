@@ -5,3 +5,5 @@
 5. Install the Bower components: bower install
 6. Launch json-server: json-server --watch db.json
 7. Run app locally: gulp
+
+App will be served on http://localhost:8888
