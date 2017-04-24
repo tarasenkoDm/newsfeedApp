@@ -9,6 +9,7 @@
     function newsfeed($http, NEWSFEED_URL_CONSTANTS, $rootScope) {
         var newsfeed = this;
 
+        // Parameters
         newsfeed.SORTING_OPTIONS = [
             { name: "title", value: "title" },
             { name: "creation date", value: "createdDate" },
@@ -18,13 +19,12 @@
         newsfeed.reverseSortOrder = true;
         newsfeed.filter = "";
 
-        // Parameters
         newsfeed.articles = [];
         newsfeed.newArticleModel = {};
         newsfeed.editPopupVisible = false;
         newsfeed.errorMessage = "";
 
-        //Method
+        //Methods
         newsfeed.showEditPopup = showEditPopup;
         newsfeed.hideEditPopup = hideEditPopup;
         newsfeed.getEmptyModel = getEmptyModel;
@@ -38,6 +38,7 @@
 
         function clearErrorMessage() {
             newsfeed.errorMessage = "";
+            $rootScope.showPopup = false;
         }
 
         function resetFilter() {
@@ -52,6 +53,7 @@
 
         function showEditPopup(modelForEdit) {
             newsfeed.editPopupVisible = true;
+            $rootScope.showPopup = true;
             if (modelForEdit) {
                 newsfeed.newArticleModel = _.cloneDeep(modelForEdit);
             }
@@ -62,6 +64,7 @@
 
         function hideEditPopup() {
             newsfeed.editPopupVisible = false;
+            $rootScope.showPopup = false;
         }
 
 
@@ -92,6 +95,7 @@
                     })
                     .catch(function(err) {
                         newsfeed.errorMessage = "Error while updating article: " +  err.status + ' ' + err.statusText;
+                        $rootScope.showPopup = true;
                     })
             } else {
                 newsfeed.newArticleModel.id = createId();
@@ -104,6 +108,7 @@
                     })
                     .catch(function(err) {
                         newsfeed.errorMessage = "Error while adding new article: " +  err.status + ' ' + err.statusText;
+                        $rootScope.showPopup = true;
                     });
             }
         }
@@ -116,6 +121,7 @@
                 })
                 .catch(function(err) {
                     newsfeed.errorMessage = "Error while deleting article: " +  err.status + ' ' + err.statusText;
+                    $rootScope.showPopup = true;
                 });
         }
 
@@ -132,6 +138,7 @@
                 })
                 .catch(function(err) {
                     newsfeed.errorMessage = "Error while loading newsfeed: " +  err.status + ' ' + err.statusText;
+                    $rootScope.showPopup = true;
                 })
         })();
     }

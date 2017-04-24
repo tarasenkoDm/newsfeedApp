@@ -9,76 +9,81 @@
     <!-- styles -->
     <link rel="stylesheet" href="css/main.css"/>
 </head>
-<body ng-app="app" ng-controller="appController" ng-cloak>
-<div>
+<body ng-app="app"
+      ng-controller="appController"
+      ng-cloak
+      ng-class="{'no-scroll': showPopup}">
+
     <h1 class="mainTitle">Newsfeed</h1>
-</div>
 
-<div class="container"
-     ng-controller="newsfeed as newsfeed"
->
-    <div>
-        <button class="btn btn-green"
-                type="button"
-                ng-click="newsfeed.showEditPopup()"
-        >
-            Add news
-        </button>
-    </div>
-    <div class="filter-options">
-        <div class="inline">
-            <span>Sort by</span>
-            <select
-                    ng-model="newsfeed.sortField"
-                    ng-options="option.value as option.name for option in newsfeed.SORTING_OPTIONS"
+    <div class="container"
+         ng-controller="newsfeed as newsfeed"
+    >
+        <div>
+            <button class="btn btn-green"
+                    type="button"
+                    ng-click="newsfeed.showEditPopup()"
             >
-            </select>
-            <label>Reverse order
-                <input class="order-checkbox" type="checkbox" ng-model="newsfeed.reverseSortOrder">
-            </label>
+                Add news
+            </button>
         </div>
+        <div class="filter-options">
+            <div class="inline">
+                <span>Sort by</span>
+                <select
+                        ng-model="newsfeed.sortField"
+                        ng-options="option.value as option.name for option in newsfeed.SORTING_OPTIONS"
+                >
+                </select>
+                <label>Reverse order
+                    <input class="order-checkbox" type="checkbox" ng-model="newsfeed.reverseSortOrder">
+                </label>
+            </div>
 
-        <div class="inline">
-            <label> Filter
-                <input type="text" ng-model="newsfeed.filter"/>
-            </label>
+            <div class="inline">
+                <label> Filter
+                    <input type="text" ng-model="newsfeed.filter"/>
+                </label>
+            </div>
+
+            <button class="inline btn btn-red btn-reset"
+                    type="button"
+                    ng-click="newsfeed.resetFilter()"
+            > x
+            </button>
         </div>
+        <!--Articles list -->
 
-        <button class="inline btn btn-red btn-reset"
-                type="button"
-                ng-click="newsfeed.resetFilter()"
-        > x
-        </button>
+        <ul class="newsfeedList">
+            <li
+                ng-repeat="article in newsfeed.articles | filter:{title:newsfeed.filter} | orderBy:newsfeed.sortField:newsfeed.reverseSortOrder as results
+                track by $index"
+            >
+                <article-component
+                        article="article"
+                        on-edit="newsfeed.showEditPopup(article)"
+                        on-delete="newsfeed.deleteArticle(article.id)"
+                ></article-component>
+            </li>
+            <p ng-if="!results.length">No articles found!</p>
+        </ul>
+
+        <!-- Popups -->
+        <div class="popup-holder" ng-if="newsfeed.editPopupVisible || newsfeed.errorMessage">
+            <edit-popup-component
+                    visible="newsfeed.editPopupVisible"
+                    on-close="newsfeed.hideEditPopup()"
+                    article="newsfeed.newArticleModel"
+                    on-remove-img="newsfeed.removeImage()"
+                    on-save="newsfeed.saveArticle()"
+            ></edit-popup-component>
+
+            <error-popup-component
+                    error-text="newsfeed.errorMessage"
+                    on-ok="newsfeed.clearErrorMessage()"
+            ></error-popup-component>
+        </div>
     </div>
-    <!--Articles list -->
-
-    <ul class="newsfeedList">
-        <li
-            ng-repeat="article in newsfeed.articles | filter:{title:newsfeed.filter} | orderBy:newsfeed.sortField:newsfeed.reverseSortOrder as results
-            track by $index"
-        >
-            <article-component
-                    article="article"
-                    on-edit="newsfeed.showEditPopup(article)"
-                    on-delete="newsfeed.deleteArticle(article.id)"
-            ></article-component>
-        </li>
-        <p ng-if="!results.length">No articles found!</p>
-    </ul>
-
-    <edit-popup-component
-            visible="newsfeed.editPopupVisible"
-            on-close="newsfeed.hideEditPopup()"
-            article="newsfeed.newArticleModel"
-            on-remove-img="newsfeed.removeImage()"
-            on-save="newsfeed.saveArticle()"
-    ></edit-popup-component>
-
-    <error-popup-component
-            error-text="newsfeed.errorMessage"
-            on-ok="newsfeed.clearErrorMessage()"
-    ></error-popup-component>
-</div>
 
 <!-- scripts -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
