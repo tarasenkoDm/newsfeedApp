@@ -55,6 +55,10 @@ h3 {
 .btn-green {
 	background-color: #4CAF50;
 }
+
+.btn-grey {
+	color: #000;
+}
 .btn-reset {
 	padding: 3px 5px;
 }
